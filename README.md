@@ -31,5 +31,4 @@ Multithreading allows running multiple tasks simultaneously to make systems fast
 5. **ConcurrentCollectionsDemo.java** – Examples of thread-safe collections.
 6. **FutureAndCompletableFutureDemo.java** – Asynchronous tasks using `Future` and `CompletableFuture`.
 
-```bash
-git clone https://github.com/Renuma1618/Java-Multithreading-Examples.git
+
