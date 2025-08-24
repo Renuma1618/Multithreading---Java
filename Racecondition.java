@@ -1,0 +1,51 @@
+class Counter{
+    int count ;
+
+    // use synchronized to get correct result
+     public  void increment(){
+         count++;
+     }
+}
+
+
+public class Racecondition {
+    public static void main(String[] args) throws InterruptedException{
+        Counter c = new Counter();
+        Runnable obj1 = () -> {
+            for (int i = 1; i <= 10000; i++) {
+                c.increment();
+            }
+        };
+        Runnable obj2 = () -> {
+            for (int i = 1; i <= 10000; i++) {
+                c.increment();
+            }
+        };
+        Thread t1 = new Thread(obj1);
+        Thread t2 = new Thread(obj2);
+
+        t1.start();
+        t2.start();
+        t1.join();
+        t2.join();
+
+
+        System.out.println( c.count);
+
+
+    }
+}
+
+// lock is similar to synchronized but if you need more access or control than syncronization work with lock
+// bnking transcations, ordering products,
+//lock.lock() and finally unclock
+//public void writeLog(String message) {
+//    lock.lock();
+//    try {
+//
+//    } finally {
+//        lock.unlock();
+//    }
+//}
+
+// volatile-> it updataes the status immediately
